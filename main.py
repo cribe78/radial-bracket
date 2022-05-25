@@ -293,12 +293,16 @@ class Bracket:
         return teams
 
 
-def create_bracket_image(tournament):
+def create_bracket_image(tournament, outfile=None):
     teams = load_teams()
     matches = load_matches(tournament, teams)
     bracket = Bracket(teams=teams, matches=matches)
     im_out = bracket.create_image()
-    return im_out
+
+    if outfile:
+        im_out.save(outfile)
+    else:
+        ImageShow.show(im_out)
 
 
 t = {
@@ -355,9 +359,10 @@ class TestBracket(unittest.TestCase):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Create a radial bracket image')
     parser.add_argument('--tournament', '-t', help='The name of the tournament file to load', default="ccl2022")
+    parser.add_argument('--outfile', '-o', help="Output file path", default=None)
     args = parser.parse_args()
 
-    im_out = create_bracket_image(args.tournament)
-    ImageShow.show(im_out)
+    create_bracket_image(args.tournament, args.outfile)
+
 
 

@@ -3,5 +3,7 @@
   {"name": "PUM", "color": [146, 133, 84], "logo": "logos/pumas.png"},
   {"name": "SAP", "color": [139, 24, 73], "logo": "logos/saprissa.png"},
   {"name": "NER", "color": [14, 34, 64], "logo": "logos/revs.png"},
-  {"name": "MTG", "color": [13, 66, 110], "logo": "logos/motagua.png"}
+  {"name": "MTG", "color": [13, 66, 110], "logo": "logos/motagua.png"},
+  {"name": "ORL", "color": [99, 52, 146], "logo": "ocsc.png"},
+  {"name": "none", "color": [55, 55, 55], "logo": "none.png"}
 ]
