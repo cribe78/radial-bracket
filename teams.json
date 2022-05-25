@@ -5,5 +5,16 @@
   {"name": "NER", "color": [14, 34, 64], "logo": "logos/revs.png"},
   {"name": "MTG", "color": [13, 66, 110], "logo": "logos/motagua.png"},
   {"name": "ORL", "color": [99, 52, 146], "logo": "ocsc.png"},
-  {"name": "none", "color": [55, 55, 55], "logo": "none.png"}
+  {"name": "PHI", "color": [7, 27, 44], "logo": "union.png"},
+  {"name": "NYCFC", "color": [120, 165, 219], "logo": "nycfc.png"},
+  {"name": "none", "color": [55, 55, 55], "logo": "none.png"},
+  {"name": "POR", "color":  [0, 55, 0]},
+  {"name": "RSL", "color":  [55, 0, 0]},
+  {"name": "COL", "color":  [80, 0, 20]},
+  {"name": "SKC", "color":  [80, 80, 240]},
+  {"name": "ATL", "color":  [200, 0, 0]},
+  {"name": "nashville", "color": [200, 200, 0]},
+  {"name": "NYRB", "color": [250, 0, 0]},
+  {"name": "VAN", "color": [0, 0, 50]},
+  {"name": "MNUFC", "color": [50, 50, 200]}
 ]

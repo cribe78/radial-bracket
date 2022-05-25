@@ -10,19 +10,35 @@ import json
 
 
 class Team:
-    def __init__(self, background_color: tuple, logo: str):
+    def __init__(self, background_color: tuple, logo: str, name: str):
         self.background_color = background_color
         self.bg = background_color
-        search_paths = [os.path.join("logos", logo), logo]
         logo_path = None
-        for sp in search_paths:
-            if os.path.isfile(sp):
-                logo_path = sp
-                continue
+        if logo:
+            search_paths = [os.path.join("logos", logo), logo]
+            for sp in search_paths:
+                if os.path.isfile(sp):
+                    logo_path = sp
+                    continue
         if logo_path:
             self.logo = Image.open(logo_path).convert("RGBA")
         else:
-            raise ValueError(f"no logo found for {logo}")
+            self.logo = Image.new("RGBA", (200, 120))
+            d = ImageDraw.Draw(self.logo)
+            font = ImageFont.truetype("fonts/Roboto/Roboto-Bold.ttf", 100)
+            d.text((10, 10), name, font=font, fill=(255, 255, 255, 255))
+
+        self._scaled_logos = {}
+
+    def logo_at_width(self, width):
+        if width in self._scaled_logos:
+            return self._scaled_logos[width]
+
+        o_width = self.logo.size[0]
+        ratio = width / o_width
+        new_height = round(self.logo.size[1] * ratio)
+        self._scaled_logos[width] = self.logo.resize((width, new_height), Image.Resampling.BICUBIC)
+        return self._scaled_logos[width]
 
 
 def load_teams():
@@ -32,7 +48,8 @@ def load_teams():
     for t in team_list:
         t['color'].append(255)
         alpha_color = tuple(t['color'])
-        teams[t['name']] = Team(alpha_color, t['logo'])
+        logo = t['logo'] if 'logo' in t else None
+        teams[t['name']] = Team(alpha_color, logo, t['name'])
     return teams
 
 
@@ -188,18 +205,17 @@ class Bracket:
     def draw_match_0(self):
         d = ImageDraw.Draw(self.base)
         fill = None
-        logo = None
+        winner = None
         if 1 in self.matches:
             winner = self.matches[1].winner()
             if winner:
                 fill = winner.bg
-                logo = winner.logo
 
         d.pieslice(self.match_box(0), 0, 360, fill=fill, outline=self.line_color, width=self.line_width1)
 
-        if logo:
-            offset = (-1 * logo.size[0] + self.origin[0], -1 * logo.size[1] + self.origin[1])
-            big_logo = logo.resize((logo.size[0] * 2, logo.size[1] * 2), Image.Resampling.BICUBIC)
+        if winner:
+            big_logo = winner.logo_at_width(int(self.rr * 1.6))
+            offset = (int(-.5 * big_logo.size[0]) + self.origin[0], int(-.5 * big_logo.size[1]) + self.origin[1])
             self.base.alpha_composite(big_logo, offset)
 
     def feeder_matches(self, match_num):
@@ -277,7 +293,7 @@ class Bracket:
         teams = self.match_teams(match_num)
         for i in (0, 1):
             if teams[i]:
-                logos[i] = teams[i].logo
+                logos[i] = teams[i].logo_at_width(int(self.rr * .8))
         return logos
 
     def match_teams(self, match_num):
@@ -303,16 +319,6 @@ def create_bracket_image(tournament, outfile=None):
         im_out.save(outfile)
     else:
         ImageShow.show(im_out)
-
-
-t = {
-    'SEA': Team((94, 153, 65, 255), "logos/sounders.png"),
-    'PUM': Team((146, 133, 84, 255), "logos/pumas.png"),
-    'MTG': Team((13, 66, 110, 255), "logos/motagua.png"),
-    'SAP': Team((139, 24, 73, 255), "logos/saprissa.png"),
-    'NER': Team((14, 34, 64, 255), "logos/revs.png")
-}
-
 
 
 class TestBracket(unittest.TestCase):
