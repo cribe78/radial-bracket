@@ -25,7 +25,7 @@ class Team:
         else:
             self.logo = Image.new("RGBA", (200, 120))
             d = ImageDraw.Draw(self.logo)
-            font = ImageFont.truetype("fonts/Roboto/Roboto-Bold.ttf", 100)
+            font = ImageFont.truetype("fonts/Roboto/Roboto-Bold.ttf", 80)
             d.text((10, 10), name, font=font, fill=(255, 255, 255, 255))
 
         self._scaled_logos = {}

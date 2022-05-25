@@ -9,12 +9,12 @@
   {"name": "NYCFC", "color": [120, 165, 219], "logo": "nycfc.png"},
   {"name": "none", "color": [55, 55, 55], "logo": "none.png"},
   {"name": "POR", "color":  [0, 55, 0]},
-  {"name": "RSL", "color":  [55, 0, 0]},
-  {"name": "COL", "color":  [80, 0, 20]},
-  {"name": "SKC", "color":  [80, 80, 240]},
-  {"name": "ATL", "color":  [200, 0, 0]},
-  {"name": "nashville", "color": [200, 200, 0]},
-  {"name": "NYRB", "color": [250, 0, 0]},
-  {"name": "VAN", "color": [0, 0, 50]},
-  {"name": "MNUFC", "color": [50, 50, 200]}
+  {"name": "RSL", "color":  [179, 8, 56], "logo": "rsl.png"},
+  {"name": "COL", "color":  [152, 1, 46], "logo": "col.png"},
+  {"name": "SKC", "color":  [145, 176, 213], "logo": "skc.png"},
+  {"name": "ATL", "color":  [150, 150, 150]},
+  {"name": "nashville", "color": [236, 232, 58], "logo":  "nashville.png"},
+  {"name": "NYRB", "color": [237, 30, 54], "logo": "redbulls.png"},
+  {"name": "VAN", "color": [0, 36, 94], "logo": "whitecaps.png"},
+  {"name": "MNUFC", "color": [228, 229, 230], "logo": "mnufc.png"}
 ]
