@@ -1,6 +1,7 @@
 # radial-bracket
 Create radial bracket images from JSON input files listing the teams and matches of the tournament.  
 
+![MLS Cup 2021 adial Bracket](https://raw.githubusercontent.com/cribe78/radial-bracket/master/examples/mlscup2021.webp)
 # Prerequisites
 Requires Python3 with Pillow module 
 
