@@ -1,0 +1,7 @@
+[
+  {"number": 1, "team1": "PUM", "team2": "SEA", "score": [1, 3]},
+  {"number": 4, "team1": "PUM", "team2": "NER", "score": [3, 3], "penalties":  [4, 3]},
+  {"number": 8, "team1": "PUM", "team2": "SAP", "score": [6, 3]},
+  {"number":  11, "team1": "NER", "team2": "PUM", "score":  [2, 1]},
+  {"number": 14, "team1": "MTG", "team2": "SEA", "score":  [0, 5]}
+]
